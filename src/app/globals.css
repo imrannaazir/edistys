@@ -119,3 +119,15 @@ body {
   flex: 0 0 100%;
   min-width: 0;
 }
+
+.bg-clip-cta {
+  -webkit-clip-path: polygon(0 0, 100% 49%, 100% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 49%, 100% 100%, 0% 100%);
+
+  background: radial-gradient(
+    24.45% 88.58% at 23.57% 2%,
+    #00e9ea 0%,
+    #1f80f0 52.08%,
+    #005bc4 100%
+  );
+}
