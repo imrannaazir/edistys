@@ -102,3 +102,8 @@ body {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
+
+.bg-clip-hero-container {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
+}

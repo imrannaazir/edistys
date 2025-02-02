@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <header className="h-[calc(100vh-100px)] relative overflow-hidden">
+    <header className="h-[calc(100vh-100px)] relative overflow-hidden bg-clip-hero-container">
       {/* background color */}
       <div className="absolute inset-0 home-hero__content__container -z-20"></div>
 
