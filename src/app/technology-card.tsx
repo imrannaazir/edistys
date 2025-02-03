@@ -1,38 +1,43 @@
 import Image from "next/image";
 
-export default function TechnologyCard({ slide }: { slide: any }) {
+export type TTechnologyCard = {
+  id: number;
+  title: string;
+  subTitle: string;
+  content: string;
+  boldContent: string;
+  image: string;
+};
+
+export default function TechnologyCard({ item }: { item: TTechnologyCard }) {
   return (
     <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 p-8 lg:p-16">
       <div className="flex-1">
-        <h3 className="text-primary font-bold uppercase tracking-widest mb-4">
-          COMPLIANCE READY
+        <h3 className="text-xs lg:text-base text-primary font-bold uppercase tracking-widest mb-4">
+          {item.title}
         </h3>
         <h2
-          className="text-4xl lg:text-[40px] font-semibold text-#0b305b
+          className="text-2xl lg:text-[40px] font-semibold text-#0b305b
  mb-6"
         >
-          Manage compliance with ease
+          {item.subTitle}
         </h2>
         <p
           className="text-[#0b305b
-] font-bold mb-6 "
+] font-bold mb-6 text-xs lg:text-base"
         >
-          Navigate through the evolving regulatory landscape with confidence by
-          streamlining compliance management—through real-time risk monitoring
-          solutions powered by AI and machine learning.
+          {item.boldContent}
         </p>
         <p
           className="text-[#0b305b
-]  mb-6 "
+]  mb-6 text-xs lg:text-base"
         >
-          Transform your compliance strategy with flexible and diversified
-          policy rules, powered by cutting-edge technology that is designed for
-          seamless integration with core banking and card payment systems.
+          {item.content}
         </p>
       </div>
       <div className="flex-1">
         <Image
-          src="/images/technologies/agile-adaptation.avif"
+          src={item.image}
           width={489}
           height={425}
           alt="Business professionals discussing compliance"

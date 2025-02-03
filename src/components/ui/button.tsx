@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 
 const buttonVariants = cva(
-  " flex items-center justify-center gap-2  px-[42px] py-[15.5px] text-lg transition-all duration-300 group overflow-hidden  rounded-sm font-semibold active:scale-[.95]",
+  " flex items-center justify-center gap-2  px-[42px] py-[15.5px] text-sm md:text-lg transition-all duration-300 group overflow-hidden  rounded-sm font-semibold active:scale-[.95]",
   {
     variants: {
       variant: {

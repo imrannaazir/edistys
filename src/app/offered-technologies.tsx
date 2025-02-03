@@ -1,35 +1,17 @@
 "use client";
 import Container from "@/components/layout/container";
+import { technologies } from "@/constants/technologies.content";
+import { useInterval } from "@/hooks/use-interval";
 import useEmblaCarousel from "embla-carousel-react";
-import React, { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import TechnologyCard from "./technology-card";
-
-const slides = [
-  {
-    id: "customer-focused",
-    title: "Customer focused",
-    active: true,
-  },
-  {
-    id: "agile-adaptable",
-    title: "Agile and adaptable",
-    active: false,
-  },
-  {
-    id: "compliance-ready",
-    title: "Compliance ready",
-    active: false,
-  },
-  {
-    id: "secure-safe",
-    title: "Secure and safe",
-    active: false,
-  },
-];
 
 function OfferedTechnologies() {
   const [selectedTab, setSelectedTab] = useState(0);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ skipSnaps: false });
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    skipSnaps: false,
+    loop: true,
+  });
 
   const scrollTo = useCallback(
     (index: number) => {
@@ -45,7 +27,7 @@ function OfferedTechnologies() {
     setSelectedTab(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!emblaApi) return;
     emblaApi.on("select", onSelect);
     return () => {
@@ -53,12 +35,21 @@ function OfferedTechnologies() {
     };
   }, [emblaApi, onSelect]);
 
+  // Autoplay functionality
+  const autoplay = useCallback(() => {
+    if (emblaApi) {
+      emblaApi.scrollNext();
+    }
+  }, [emblaApi]);
+
+  useInterval(autoplay, 5000);
+
   return (
-    <div className="min-h-screen  ">
+    <div className="min-h-screen">
       {/* Tab Navigation */}
       <Container>
-        <div className="flex justify-center space-x-8 py-8">
-          {slides.map((slide, index) => (
+        <div className=" justify-center space-x-8 py-8 hidden lg:flex">
+          {technologies.map((slide, index) => (
             <button
               key={slide.id}
               onClick={() => scrollTo(index)}
@@ -75,10 +66,9 @@ function OfferedTechnologies() {
       </Container>
 
       {/* Carousel */}
-
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex touch-pan-y pb-8">
-          {slides.map((slide) => (
+          {technologies.map((slide) => (
             <div key={slide.id} className="flex-[0_0_100%] min-w-0">
               <Container>
                 <div
@@ -86,9 +76,9 @@ function OfferedTechnologies() {
                     filter:
                       "drop-shadow(rgba(207, 233, 247, 0.47) 0px 16px 21px)",
                   }}
-                  className="bg-white rounded-[20px]   mx-4"
+                  className="bg-white rounded-[20px] mx-4"
                 >
-                  <TechnologyCard key={slide.id} slide={slide} />
+                  <TechnologyCard key={slide.id} item={slide} />
                 </div>
               </Container>
             </div>

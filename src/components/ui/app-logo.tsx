@@ -1,9 +1,19 @@
 import Image from "next/image";
+import { FC } from "react";
 
-const AppLogo = () => {
+type TAppLogo = {
+  isDark?: boolean;
+};
+
+const AppLogo: FC<TAppLogo> = ({ isDark }) => {
   return (
     <div>
-      <Image src={"/logo.svg"} alt="logo" height={27} width={170} />
+      <Image
+        src={isDark ? "/logo-dark.svg" : "/logo.svg"}
+        alt="logo"
+        height={27}
+        width={170}
+      />
     </div>
   );
 };

@@ -18,7 +18,7 @@ export function MobileSidebar() {
     <aside className="md:hidden">
       <Sheet>
         <SheetTrigger asChild>
-          <button>
+          <button className="text-white">
             <PanelRight />
           </button>
         </SheetTrigger>
